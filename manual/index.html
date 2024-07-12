@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+    </script>
+
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<ul>
+<li><a href="#%EF%BC%96%E3%83%80%E3%82%A4%E3%82%AA%E3%83%BC%E3%83%89%E3%81%AE%E7%89%B9%E6%80%A7%E3%81%A8%E6%95%B4%E6%B5%81%E5%9B%9E%E8%B7%AF">６．ダイオードの特性と整流回路</a>
+<ul>
+<li><a href="#1%E7%9B%AE%E7%9A%84">1.目的</a></li>
+<li><a href="#2-%E8%A7%A3%E8%AA%AC">2. 解説</a>
+<ul>
+<li><a href="#22-%E3%83%80%E3%82%A4%E3%82%AA%E3%83%BC%E3%83%89">2.2 ダイオード</a></li>
+<li><a href="#22-%E6%95%B4%E6%B5%81%E5%9B%9E%E8%B7%AF">2.2 整流回路</a></li>
+</ul>
+</li>
+<li><a href="#3-%E4%BD%BF%E7%94%A8%E6%A9%9F%E5%99%A8">3 使用機器</a>
+<ul>
+<li><a href="#31-%E6%8C%81%E5%8F%82%E3%81%99%E3%82%8B%E3%82%82%E3%81%AE">3.1 持参するもの</a></li>
+</ul>
+</li>
+<li><a href="#4-%E5%AE%9F%E9%A8%93%E6%96%B9%E6%B3%95">4. 実験方法</a>
+<ul>
+<li><a href="#41-%E3%83%80%E3%82%A4%E3%82%AA%E3%83%BC%E3%83%89%E3%81%AE%E9%9B%BB%E5%9C%A7%E3%83%BC%E9%9B%BB%E6%B5%81%E7%89%B9%E6%80%A7">4.1 ダイオードの電圧ー電流特性</a></li>
+<li><a href="#42-%E5%8D%8A%E6%B3%A2%E6%95%B4%E6%B5%81%E5%9B%9E%E8%B7%AF">4.2 半波整流回路</a></li>
+<li><a href="#43-%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E5%AE%9F%E9%A8%93">4.3 シミュレータを用いた実験</a></li>
+</ul>
+</li>
+<li><a href="#5-%E5%AE%9F%E9%A8%93%E7%B5%90%E6%9E%9C">5. 実験結果</a>
+<ul>
+<li><a href="#51-%E3%83%80%E3%82%A4%E3%82%AA%E3%83%BC%E3%83%89%E3%81%AE%E9%9B%BB%E5%9C%A7%E3%83%BC%E9%9B%BB%E6%B5%81%E7%89%B9%E6%80%A7">5.1 ダイオードの電圧ー電流特性</a></li>
+<li><a href="#52-%E5%8D%8A%E6%B3%A2%E6%95%B4%E6%B5%81%E5%9B%9E%E8%B7%AF">5.2 半波整流回路</a></li>
+<li><a href="#53-%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E5%AE%9F%E9%A8%93">5.3 シミュレータを用いた実験</a></li>
+</ul>
+</li>
+<li><a href="#6-%E5%AE%9F%E9%A8%93%E7%B5%90%E6%9E%9C%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E8%80%83%E5%AF%9F">6. 実験結果に対する考察</a></li>
+<li><a href="#7-%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88%E3%81%AB%E8%A8%98%E8%BC%89%E3%81%99%E3%82%8B%E5%86%85%E5%AE%B9">7. レポートに記載する内容</a></li>
+<li><a href="#%E5%AE%9F%E9%A8%93%E3%82%92%E5%AE%9F%E6%96%BD%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E6%B3%A8%E6%84%8F">実験を実施する際の注意</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">参考文献</a></li>
+<li><a href="#%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88%E6%8F%90%E5%87%BA%E3%81%AE%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88">レポート提出のチェックリスト</a>
+<ul>
+<li><a href="#%E5%85%B1%E9%80%9A">共通</a></li>
+<li><a href="#%E3%82%B0%E3%83%A9%E3%83%95">グラフ</a></li>
+<li><a href="#%E8%A1%A8">表</a></li>
+<li><a href="#%E7%B5%90%E6%9E%9C%E3%81%A8%E8%80%83%E5%AF%9F">結果と考察</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="%EF%BC%96%E3%83%80%E3%82%A4%E3%82%AA%E3%83%BC%E3%83%89%E3%81%AE%E7%89%B9%E6%80%A7%E3%81%A8%E6%95%B4%E6%B5%81%E5%9B%9E%E8%B7%AF">６．ダイオードの特性と整流回路</h1>
+<h2 id="1%E7%9B%AE%E7%9A%84">1.目的</h2>
+<p>電子回路に用いられる基本素子の中で能動素子のひとつであるダイオードの特性を測定する．またダイオードの応用回路として整流回路について調べる．</p>
+<h2 id="2-%E8%A7%A3%E8%AA%AC">2. 解説</h2>
+<h3 id="22-%E3%83%80%E3%82%A4%E3%82%AA%E3%83%BC%E3%83%89">2.2 ダイオード</h3>
+<p>N 形または P 形半導体と金属の接合あるいは N 形半導体と P<br>
+形半導体の接合をダイオード（diode）とよび， N 形半導体側をカソード，P<br>
+形半導体側をアノードとよぶ．<br>
+ダイオードの記号は図<a href="#fig:%E3%83%80%E3%82%A4%E3%82%AA%E3%83%BC%E3%83%89">1</a>{reference-type=&quot;ref&quot;<br>
+reference=&quot;fig:ダイオード&quot;}(a)で表され，電流 I と電圧 V の関係は</p>
+<p>$$I = I_0 {exp(qV/kT)-1 }$$</p>
+<p>で与えられる．ここに $I_0$ はダイオードによって決まる定数で，$k$はボルツマン定数，$T$ は絶対温度， $q$ は電子の電荷量である．</p>
+<p><img src="img/diode.png" alt=""></p>
+<p>(a)回路記号</p>
+<p><img src="img/diode_char.png" alt=""></p>
+<p>(b)特性</p>
+<p>図1. ダイオード</p>
+<p>式関係をグラフで表すと図1(b)のようになる．ダイオードの電流はアノードからカソードへの一方向にのみ流れ，その逆方向へはほとんど流れない．すなわちダイオードの両端電圧が順方向バイアス（アノードが正，カソードが負）のときは両端電圧は電流が変化してもあまり変らずほぼ一定であり，素子のインピーダンスは低く近似的に短絡状態と見なせる．この時のダイオードの両端電圧 $Vs$ を飽和電圧という．飽和電圧はゲルマニウムダイオードで 0.2V，シリコンダイオードで 0.6～0.7V程度である．またダイオードの両端電圧が逆方向バイアス（アノードが負，カソードが正）のときは両端電圧にかかわらず電流はほとんど流れないので，素子のインピーダンスは高く開放状態と見なせる．<br>
+このような性質を利用して，実際の応用回路ではダイオードは検波器や整流器の他， 順方向バイアス時で電流がそれほど大きくない時には両端電圧が $Vs$ にほぼ等しいことを利用して低電圧の直流定電圧が必要な時に用いられる．</p>
+<p>ダイオードの逆方向電圧を増加しある値を越えると図2(b)に示すように電流が急激に増加し端子間の電圧はほぼ一定となる．この現象をツェナー効果といい，この電圧 $Vz$ をツェナー電圧という．またこのダイオードをツェナーダイオード（Zener diode）または定電圧ダイオードとよぶ．ツェナーダイオードは流れる電流が変化しても両端の電圧は変らないから電圧が $Vz$ の直流定電圧源として利用できる．</p>
+<p><img src="img/zener.png" alt=""></p>
+<p>(a)回路記号</p>
+<p><img src="img/zener_char.png" alt=""></p>
+<p>(b)特性</p>
+<p>図2. ツェナーダイオード</p>
+<h3 id="22-%E6%95%B4%E6%B5%81%E5%9B%9E%E8%B7%AF">2.2 整流回路</h3>
+<p>ダイオードの電流はアノードからカソードへの一方向にのみ流れ，その逆方向へはほとんど流れないという性質を利用すると，交流から直流を作ることができる．</p>
+<p>図3(a)に示すようにダイオードに交流電圧 $v$ をかけると，$v$ が正の時にだけ 電流 $i$ が流れ，$v$ が負の時には電流は流れないので，$v$ に対する $i$ の波形は 図3(b)に示すようになる． 電流 $i$は，その大きさは時間と共に変化するがその符合は常に正で変らない，脈流とよばれる直流の一種となる．このようにダイオードを利用すれば，交流から直流を作ることができる．これをダイオードの整流作用という．図3(a)の回路を半波整流回路とよぶ．</p>
+<p><img src="img/half_rectifier_circuit(wo_cap).png" alt=""></p>
+<p>(a)回路図</p>
+<p><img src="img/half_rectifier_circuit(wo_cap)_wave.png" alt=""></p>
+<p>(b)波形</p>
+<p>図3.半波整流回路</p>
+<p>この回路では脈流は直流成分の他に交流成分を多く含んでいるのでそのままでは実用に適さない．</p>
+<p>この交流成分を取り除き，時間的に大きさが変化しない直流を得るためには，例えば図4(a)の回路のように，整流回路の負荷抵抗に並列にコンデンサを接続すればよい．</p>
+<p><img src="img/half_rectifier_circuit(with_cap).png" alt=""></p>
+<p>(a)回路図</p>
+<p><img src="img/half_rectifier_circuit(with_cap)_wave.png" alt=""></p>
+<p>(b)波形</p>
+<p>図4.半波整流回路（整流あり）</p>
+<p>この回路の動作は次のようになる．入力電圧が出力電圧より高い期間のみダイオードは導通状態となり順方向に電流が流れ，出力側の負荷抵抗に電流を流すとともにコンデンサを充電する．ダイオードに電流が流れるのは一周期の中のごく僅かな期間である．残りの期間はダイオードは非導通状態となって入力側からは電流は流れないが，負荷抵抗にはコンデンサの放電電流が流れる．コンデンサの容量は十分大きいものとすると，ダイオードが非導通の間のコンデンサの放電電流によるコンデンサ両端の電圧の変化はごくわずかなので，出力側にはほぼ一定の電圧が得られる．しかしこの出力電圧は完全に一定ではなく多少変動する．この変動をリップル（ripple）という．このように，脈流から交流成分を取り除き，直流成分のみを得る回路のことを平滑回路とよぶ．平滑回路としてはリップルをできるだけ小さくすることが望まれる．</p>
+<h2 id="3-%E4%BD%BF%E7%94%A8%E6%A9%9F%E5%99%A8">3 使用機器</h2>
+<ol>
+<li>
+<p>可変直流電圧源</p>
+</li>
+<li>
+<p>マルチメータ</p>
+</li>
+<li>
+<p>正弦波交流信号発生装置</p>
+</li>
+<li>
+<p>オシロスコープ</p>
+</li>
+<li>
+<p>抵抗（1 Ω，220Ω 2kΩ）</p>
+</li>
+<li>
+<p>電解コンデンサ（100 $\mu$F 耐圧 50 V）</p>
+</li>
+<li>
+<p>ダイオード（1SS133，RD4.7E）</p>
+</li>
+<li>
+<p>シミュレーションソフトMATLABが利用可能な計算機（各自所有のノートパソコンまたは 大学内の教育用端末）<br>
+使用するツールボックス（アドオン製品）</p>
+<ul>
+<li>Simulink</li>
+<li>Simscape Electrical</li>
+</ul>
+</li>
+</ol>
+<h3 id="31-%E6%8C%81%E5%8F%82%E3%81%99%E3%82%8B%E3%82%82%E3%81%AE">3.1 持参するもの</h3>
+<ol>
+<li>ブレッドボード</li>
+<li>測定データ記録およびグラフ描画する端末・機材（電子端末（パソコン等）※またはグラフ用紙（方眼グラフ・片対数グラフ用紙））</li>
+</ol>
+<p>※シミュレーションは各個人で実施するため，シミュレーション環境を構築したパソコンを持ち込む必要はない．各自所有のパソコンのシミュレーション環境構築方法は別途指示があるため，その指示に従い，各自で準備すること．</p>
+<h2 id="4-%E5%AE%9F%E9%A8%93%E6%96%B9%E6%B3%95">4. 実験方法</h2>
+<h3 id="41-%E3%83%80%E3%82%A4%E3%82%AA%E3%83%BC%E3%83%89%E3%81%AE%E9%9B%BB%E5%9C%A7%E3%83%BC%E9%9B%BB%E6%B5%81%E7%89%B9%E6%80%A7">4.1 ダイオードの電圧ー電流特性</h3>
+<p>図5においてダイオードの両端にかかる電圧 $V$ とダイオードに流れる電流 $I$について以下の2種類の電圧-電流（$V–I$）特性のグラフを作成する．</p>
+<p><img src="img/Exp_4_1.png" alt=""></p>
+<p>図5.ダイオード電圧ー電流特性実験回路</p>
+<ul>
+<li>線形電圧軸-線形電流軸の方眼グラフ</li>
+<li>線形電圧軸-対数電流軸の片対数グラフ（$I &gt; 0$，$V &gt; 0$の範囲のみ）</li>
+</ul>
+<p>用いるダイオードは小信号用ダイオード<code>1SS133</code>とツェナーダイオード<code>RD4.7E</code>の二種類とする.（入力直流電圧を 10V以上にして各素子に過大な電流を流さないよう注意する）<br>
+※グラフを作成しながら測定を行うこと．またグラフの目盛のとり方に注意すること．</p>
+<ol>
+<li>図 5 に示す回路をブレッドボード上に実現する．</li>
+<li>入力直流電圧 $V_1$ を加え，マルチメータにて電圧 $V_1$，$V_2$ を測定する．電圧 $V_1，V_2$よりダイオードに流れた電流 $I$を計算し，ダイオードの両端にかかる電圧$V$とダイオードに流れる電流$I$をグラフ上にプロットする．</li>
+<li>入力直流電圧を 0V～+10Vの間で適当に変化させ，実験を繰り返す．グラフがスムースにつなげるように適切な点数分の測定を繰り返す．</li>
+<li>入力の直流電圧源の正負を逆に接続して入力直流電圧を 0V～−10Vまで変化させ，同様に電圧 $V_1，V_2$    を測定し，グラフ上にプロットする．</li>
+</ol>
+<h3 id="42-%E5%8D%8A%E6%B3%A2%E6%95%B4%E6%B5%81%E5%9B%9E%E8%B7%AF">4.2 半波整流回路</h3>
+<p>半波整流回路（平滑コンデンサあり及びなし）について，入力電圧$v_1$，出力電圧 $v_2$，ダイオードに流れた電流$i(=−v_3)$をオシロスコープで観測して動作を確認，理解する．</p>
+<ol>
+<li>図6に示す半波整流回路をブレッドボード上に実現する．ダイオードは小信号ダイオード<code>1SS133</code>とする．</li>
+<li>図中に示す電圧 $v_1，v_2$をオシロスコープで観測し，記録する（$v_1,v_2$の波形は比較しやすいよう，縦軸・横軸のレンジや基準（GND）を一致させる）．またv1，v3波形を観測し，ダイオードに流れた電流波形および電流が流れている時間を記録する．</li>
+<li>図7に示すようにコンデンサを追加し，平滑回路を用いた半波整流回路をブレッドボード上に　実現し，同様の実験を繰り返し，$v_1，v_2，v_3$のオシロスコープの波形を記録する．</li>
+</ol>
+<p><img src="img/Exp_4_2(wo_cap).png" alt=""></p>
+<p>図6.半波整流実験回路</p>
+<p><img src="img/Exp_4_2(with_cap).png" alt=""></p>
+<p>図7.半波整流実験回路</p>
+<pre class="hljs"><code><div>コンデンサには極性のあるアルミ電解コンデンサを用いるので，接続方向に注意する．
+</div></code></pre>
+<h3 id="43-%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E5%AE%9F%E9%A8%93">4.3 シミュレータを用いた実験</h3>
+<p>4.1 ダイオードの電圧‒電流特性および4.2 半波整流回路について，<br>
+シミュレータを用いて同一回路・同一条件下でシミュレーション実験を行い，<br>
+シミュレーション結果と測定結果を比較する．ただし，シミュレーションの元となる回路は別途配布する．</p>
+<p>シミュレーションに用いるダイオードは1SS133のみとする．<br>
+結果を比較しやすくするために，測定結果とシミュレーション結果は同一のグラフに示すこと．<br>
+また，平滑化を有する半波整流回路において，抵抗値を変えてシミュレーションを行い，<br>
+出力波形がどのように変化するかを観測し，考察する.</p>
+<h2 id="5-%E5%AE%9F%E9%A8%93%E7%B5%90%E6%9E%9C">5. 実験結果</h2>
+<p>レポートに本実験の結果を以下にまとめること．全て記載されていなければ受理されない．</p>
+<h3 id="51-%E3%83%80%E3%82%A4%E3%82%AA%E3%83%BC%E3%83%89%E3%81%AE%E9%9B%BB%E5%9C%A7%E3%83%BC%E9%9B%BB%E6%B5%81%E7%89%B9%E6%80%A7">5.1 ダイオードの電圧ー電流特性</h3>
+<ol>
+<li>2つのダイオード（ISS133,RD4.7E）の測定結果を表で示すこと．</li>
+<li>ダイオードの電圧-電流特性グラフ（計4つ）を示すこと．2つのダイオード：ISS133,RD4.7Eにおいて，１）縦軸が線形，２）縦軸が対数のグラフ．</li>
+<li>ダイオードの電圧-電流特性グラフ（縦軸が対数）の傾きを求め，2つのダイオードで比較する．傾きを算出にするために用いた代表2点や計算式を示すこと．</li>
+</ol>
+<h3 id="52-%E5%8D%8A%E6%B3%A2%E6%95%B4%E6%B5%81%E5%9B%9E%E8%B7%AF">5.2 半波整流回路</h3>
+<p>平滑あり・平滑なしの2つの整流回路において，それぞれ記録する．</p>
+<ol>
+<li>$v_1,v_2,v_3$波形の記録結果を示す．</li>
+<li>ダイオードに流れる電流($i=-v_3$)が流れる時間を示すこと．</li>
+<li>コンデンサを入れることで出力波形がどうして平滑化されるかを，コンデンサにかかる電圧の大きさと充放電の関係から説明する．</li>
+</ol>
+<h3 id="53-%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E5%AE%9F%E9%A8%93">5.3 シミュレータを用いた実験</h3>
+<ol>
+<li>ダイオードの電圧ー電流特性のシミュレーション結果（縦軸・横軸ともに線形）を示すこと．</li>
+<li>半波整流回路（平滑あり）において抵抗$R_L$を変えた$v_1,v_2$波形を示すこと．</li>
+</ol>
+<h2 id="6-%E5%AE%9F%E9%A8%93%E7%B5%90%E6%9E%9C%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E8%80%83%E5%AF%9F">6. 実験結果に対する考察</h2>
+<ol>
+<li>2つのダイオード（ISS133,RD4.7E）の特性を比較し，その違いからそれぞれの利点について考察せよ．</li>
+<li>実測結果とシミュレーション結果を比較し，シミュレーションの精度について検証せよ．また2つの結果で誤差が生じた理由について考察せよ．</li>
+<li>半端整流回路において抵抗値$R_L$が，電圧波形やダイオードに流れた時間に与える要因・原理について考察せよ．</li>
+<li>その他，実験結果から考察できることを，全て記載する．</li>
+</ol>
+<h2 id="7-%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88%E3%81%AB%E8%A8%98%E8%BC%89%E3%81%99%E3%82%8B%E5%86%85%E5%AE%B9">7. レポートに記載する内容</h2>
+<p>レポートには下記の内容を記述すること．ただし，必ずしも下記に記載されている順でなくてもよい．</p>
+<ul>
+<li>表紙（指定された表紙を使用すること）</li>
+<li>目的</li>
+<li>実験方法（指導書通りではなく，簡略化したもので良い）</li>
+<li>実験結果および考察</li>
+<li>感想（測定実験・シミュレーションの実施に関する感想）</li>
+</ul>
+<h2 id="%E5%AE%9F%E9%A8%93%E3%82%92%E5%AE%9F%E6%96%BD%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E6%B3%A8%E6%84%8F">実験を実施する際の注意</h2>
+<ol>
+<li>本実験では，学生が自らブレッドボード上に素子の配置および配線を行い実験回路を作成する．配線ミス等には十分注意し，実験開始前に自ら十分確認をし，さらに<strong>指導者等の確認を必ず受けること</strong>．</li>
+<li>配線ミスによる短絡，素子値の取り違え，方向性のある素子の逆方向接続，測定機器の逆方向接続などにより，<br>
+測定器の破損や異常発熱，素子の異常発熱や焼損および破裂等の事故が起こる可能性があるので，十分注意すること．</li>
+<li>シミュレーション環境構築やシミュレーション実行時のトラブルや不具合によるレポート提出遅れは，学内の教育用端末が故障等で利用できない場合を除き，認めない．事前にシミュレーション環境構築を行っておくことを推奨する．</li>
+</ol>
+<h2 id="%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">参考文献</h2>
+<p>[1] 岩田聡編著，&quot;新インターユニバーシティ電子回路&quot;，オーム社•早原悦朗，&quot;基礎からの電気・電子工学電子回路&quot;，森北出版</p>
+<p>[2] 早原悦朗，&quot;電気電子回路 2 電子回路編&quot;，森北出版</p>
+<p>[3] 藤井信生，&quot;なっとくする電子回路&quot;，講談社</p>
+<h2 id="%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88%E6%8F%90%E5%87%BA%E3%81%AE%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88">レポート提出のチェックリスト</h2>
+<p>レポート提出前に，各自チェックリストで確認すること．下記が守られていない場合は再提出となることもある．</p>
+<h3 id="%E5%85%B1%E9%80%9A">共通</h3>
+<p><input type="checkbox">表紙が付いているか．テンプレートに従っているか（Windows＆word以外：PDF表示したときにテンプレートに従っているか）．</p>
+<p><input type="checkbox">表紙に氏名や学籍番号．共同実験者氏名が正しいか．</p>
+<p><input type="checkbox" >記載すべき項目（7章の項目）が全て記載されているか．</p>
+<p><input type="checkbox">すべての図表が文章に引用されているか（本文中に「図1」や「表1」などと含まれているか）．</p>
+<p><input type="checkbox">文章中に出てくる変数の説明・定義がされているか．</p>
+<h3 id="%E3%82%B0%E3%83%A9%E3%83%95">グラフ</h3>
+<p><input type="checkbox">キャプションが入っているか．キャプションの位置は正しい（図の下）か．</p>
+<p><input type="checkbox">縦軸・横軸のラベルや目盛の数値が付いているか．適切な表現となっているか．</p>
+<p><input type="checkbox">測定値はプロットされているか．波形はプロット（マーカー）無しの線で示されているか．</p>
+<h3 id="%E8%A1%A8">表</h3>
+<p><input type="checkbox">キャプションが入っているか．キャプションの位置は正しい（表の上）か．</p>
+<p><input type="checkbox">表の枠は適切についているか．</p>
+<p><input type="checkbox">適切な単位([V]や[I])が付いているか．</p>
+<p><input type="checkbox">有効数字が適切か（小数桁が必要以上に多くなりすぎていないか）．</p>
+<h3 id="%E7%B5%90%E6%9E%9C%E3%81%A8%E8%80%83%E5%AF%9F">結果と考察</h3>
+<p><input type="checkbox">単に図表を示すだけでなく，その図表から読み取れることを記述しているか．</p>
+<p><input type="checkbox">結果（実験から読み取れる内容）と考察が区別されているか．</p>
+<pre class="hljs"><code><div>（結果）実測結果とシミュレーション結果に誤差が生じていた。
+
+（考察）この理由は・・・であると考えられる。
+</div></code></pre>
+
+</body>
+</html>
